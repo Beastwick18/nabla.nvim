@@ -226,8 +226,8 @@ if relrow == 0 then
 	local margin_left = desired_col - p1
 	local margin_right = p2 - #virt_line - desired_col
 
-	if margin_left > 1 then
-		table.insert(chunks, {string.rep("~", margin_left-1), "NonText"})
+	if margin_left > 0 then
+		table.insert(chunks, {string.rep("~", margin_left), "NonText"})
 	end
 	-- for i=1,margin_left do
 	-- 	table.insert(chunks, {" ", "NonText"})
@@ -295,12 +295,12 @@ local padding = desired_col - col
 if prev_row == srow then
 	padding = padding - prev_diff
 end
--- if padding > 1 then
--- 	table.insert(vline, {string.rep("-", padding-1), "Normal"})
--- end
-for i=1,padding do
-	table.insert(vline, { "-", "Normal" })
+if padding > 0 then
+	table.insert(vline, {string.rep("-", padding), "Normal"})
 end
+-- for i=1,padding do
+-- 	table.insert(vline, { "-", "Normal" })
+-- end
 
 @append_virt_line+=
 vim.list_extend(vline, virt_line)
