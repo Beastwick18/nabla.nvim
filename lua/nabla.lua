@@ -313,8 +313,8 @@ function enable_virt(opts)
 	end
 	mult_virt_ns[buf] = vim.api.nvim_create_namespace("")
 
-	local prev_row
-	local prev_diff
+	local prev_row = -1
+	local prev_diff = 0
 
 	local next_prev_row
 	local next_prev_diff
@@ -410,6 +410,11 @@ function enable_virt(opts)
   			end
 
   			for r, virt_line in ipairs(drawing_virt) do
+  				if srow ~= prev_row then
+  					prev_row = -1
+  					prev_diff = 0
+  				end
+
   				local relrow = r - g.my - 1
 
   				if srow == 0 then
@@ -449,7 +454,7 @@ function enable_virt(opts)
   						table.insert(chunks, {"", "NonText"})
   					end
   					next_prev_row = srow
-  					next_prev_diff = margin_right
+  					next_prev_diff = margin_right + prev_diff
 
   					table.insert(inline_virt, { chunks, concealline, p1, p2 })
 
