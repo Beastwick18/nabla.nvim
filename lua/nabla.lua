@@ -445,7 +445,7 @@ function enable_virt(opts)
   					local margin_right = p2 - #virt_line - desired_col
 
   					if margin_left > 0 then
-  						table.insert(chunks, {string.rep(" ", margin_left), "NonText"})
+  						table.insert(chunks, {string.rep(" ", margin_left-1), "NonText"})
   					end
   					-- for i=1,margin_left do
   					-- 	table.insert(chunks, {" ", "NonText"})
@@ -477,7 +477,7 @@ function enable_virt(opts)
   						padding = padding - prev_diff
   					end
   					if padding > 0 then
-  						table.insert(vline, {string.rep(" ", padding), "Normal"})
+  						table.insert(vline, {string.rep(" ", padding-1), "Normal"})
   					end
   					-- for i=1,padding do
   					-- 	table.insert(vline, { " ", "Normal" })
