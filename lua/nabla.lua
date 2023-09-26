@@ -474,7 +474,7 @@ function enable_virt(opts)
   					if prev_row == srow then
   						padding = padding - prev_diff
   					end
-  					table.insert(chunks, {string.rep(" ", padding), "Normal"})
+  					table.insert(chunks, {"   ", "Normal"})
   					-- for i=1,padding do
   					-- 	table.insert(vline, { " ", "Normal" })
   					-- end
