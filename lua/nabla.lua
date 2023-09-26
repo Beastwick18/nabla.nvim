@@ -444,9 +444,10 @@ function enable_virt(opts)
   					local margin_left = desired_col - p1
   					local margin_right = p2 - #virt_line - desired_col
 
-  					for i=1,margin_left do
-  						table.insert(chunks, {" ", "NonText"})
-  					end
+  					table.insert(chunks, {string.rep(" ", margin_left), "NonText"})
+  					-- for i=1,margin_left do
+  					-- 	table.insert(chunks, {" ", "NonText"})
+  					-- end
 
   					vim.list_extend(chunks, virt_line)
 
@@ -473,9 +474,10 @@ function enable_virt(opts)
   					if prev_row == srow then
   						padding = padding - prev_diff
   					end
-  					for i=1,padding do
-  						table.insert(vline, { " ", "Normal" })
-  					end
+  					table.insert(chunks, {string.rep(" ", padding), "Normal"})
+  					-- for i=1,padding do
+  					-- 	table.insert(vline, { " ", "Normal" })
+  					-- end
 
   					vim.list_extend(vline, virt_line)
 
