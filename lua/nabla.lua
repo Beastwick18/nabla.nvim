@@ -477,7 +477,7 @@ function enable_virt(opts)
   						padding = padding - prev_diff
   					end
   					if padding > 0 then
-  						table.insert(vline, {string.rep("-", padding), "Normal"})
+  						table.insert(vline, {"---", "Normal"})
   					end
   					-- for i=1,padding do
   					-- 	table.insert(vline, { "-", "Normal" })
