@@ -476,12 +476,12 @@ function enable_virt(opts)
   					if prev_row == srow then
   						padding = padding - prev_diff
   					end
-  					if padding > 1 then
-  						table.insert(vline, {string.rep("-", padding-1), "Normal"})
-  					end
-  					-- for i=1,padding do
-  					-- 	table.insert(vline, { " ", "Normal" })
+  					-- if padding > 1 then
+  					-- 	table.insert(vline, {string.rep("-", padding-1), "Normal"})
   					-- end
+  					for i=1,padding do
+  						table.insert(vline, { "-", "Normal" })
+  					end
 
   					vim.list_extend(vline, virt_line)
 
