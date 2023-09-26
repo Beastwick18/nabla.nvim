@@ -226,7 +226,7 @@ if relrow == 0 then
 	local margin_left = desired_col - p1
 	local margin_right = p2 - #virt_line - desired_col
 
-	table.insert(chunks, {string.rep(" ", margin_left), "NonText"})
+	table.insert(chunks, {"   ", "NonText"})
 	-- for i=1,margin_left do
 	-- 	table.insert(chunks, {" ", "NonText"})
 	-- end
