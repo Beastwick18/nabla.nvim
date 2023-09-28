@@ -82,6 +82,7 @@ local style = {
 	left_single_bra = '{',
 	right_single_bra = '}',
 
+	tilde_symbol = "˷",
 	vec_arrow = "→",
 
 }
@@ -1799,6 +1800,13 @@ function to_ascii(explist, exp_i)
     	  end
     	  local overline = grid:new(w, 1, { bar })
     	  g = overline:join_vert(belowgrid)
+    	  g.my = belowgrid.my + 1
+
+    	elseif name == "tilde" then
+    	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
+    	  exp_i = exp_i + 1
+    	  local tilde = grid:new(utf8len(style.tilde_symbol), 1, { style.tilde_symbol })
+    	  g = tilde:join_vert(belowgrid)
     	  g.my = belowgrid.my + 1
 
     	elseif name == "vec" then
