@@ -4,10 +4,11 @@ local autogen_autocmd = {}
 local autogen_flag = false
 
 @enable_autogen+=
-autogen_autocmd[buf] = vim.api.nvim_create_autocmd({"InsertLeave"}, {
+autogen_autocmd[buf] = vim.api.nvim_create_autocmd({"TextChanged"}, {
 	buffer = buf,
 	desc = "nabla.nvim: Regenerates virt_lines automatically when the user exists insert mode",
 	callback = function()
+		print("update")
 		autogen_flag = true
 		disable_virt()
 		autogen_flag = false
