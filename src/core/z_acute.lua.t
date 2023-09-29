@@ -1,8 +1,8 @@
 ##../ascii
 @transform_function_into_ascii+=
-elseif name == "tilde" then
+elseif name == "acute" then
   local belowgrid = to_ascii({explist[exp_i+1]}, 1)
   exp_i = exp_i + 1
-  local tilde = grid:new(1, 1, { "˷" })
-  g = tilde:join_vert(belowgrid)
+  local acute = grid:new(1, 1, { "ˏ" })
+  g = acute:join_vert(belowgrid)
   g.my = belowgrid.my + 1

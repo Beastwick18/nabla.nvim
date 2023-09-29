@@ -259,7 +259,7 @@
 ["hookrightarrow"] = "↪",
 ["hslash"] = "ℏ",
 ["idotsint"] = "∫⋯∫",
-["iff"] = "⟺",
+["iff"] = "⇔",
 ["image"] = "⊷",
 ["imath"] = "ı",
 ["Im"] = "ℑ",
