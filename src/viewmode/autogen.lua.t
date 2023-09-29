@@ -8,6 +8,7 @@ autogen_autocmd[buf] = vim.api.nvim_create_autocmd({"InsertLeave", "TextChanged"
 	buffer = buf,
 	desc = "nabla.nvim: Regenerates virt_lines automatically when the user exists insert mode",
 	callback = function()
+		print("Update")
 		autogen_flag = true
 		disable_virt()
 		autogen_flag = false
