@@ -590,7 +590,7 @@
 ["wp"] = "℘",
 ["wr"] = "≀",
 
-@special_symbols+=
+@dots_symbols+=
 ["cdots"] = "⋯",
 ["vdots"] = "⋮",
 ["ddots"] = "⋱",

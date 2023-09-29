@@ -19,6 +19,10 @@ local special_syms = {
 	@special_symbols
 }
 
+local dots_symbols = {
+	@dots_symbols
+}
+
 @grid_prototype
 
 
@@ -958,6 +962,8 @@ elseif special_nums[name] then
   t = "num"
 elseif greek_etc[name] then
   t = "var"
+elseif dots_symbols[name] then
+	t = "sym"
 end
 
 @transform_exp_to_grid+=

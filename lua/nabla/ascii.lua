@@ -714,6 +714,9 @@ local special_syms = {
 	["wp"] = "℘",
 	["wr"] = "≀",
 
+}
+
+local dots_symbols = {
 	["cdots"] = "⋯",
 	["vdots"] = "⋮",
 	["ddots"] = "⋱",
@@ -1596,6 +1599,8 @@ function to_ascii(explist, exp_i)
     	    t = "num"
     	  elseif greek_etc[name] then
     	    t = "var"
+    	  elseif dots_symbols[name] then
+    	  	t = "sym"
     	  end
 
     		g = grid:new(utf8len(sym), 1, { sym }, t)
