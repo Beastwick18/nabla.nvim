@@ -1927,7 +1927,7 @@ function to_ascii(explist, exp_i)
         local cellsgrid, maxheight = grid_of_exps(exp.content.exps)
         local res = combine_matrix_grid(cellsgrid, maxheight)
         res.my = math.floor(res.h/2)
-        g = res:enclose_brackets()
+        g = res:enclose_bracket()
 
       else
         error("Unknown block expression " .. name)

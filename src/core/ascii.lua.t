@@ -951,7 +951,7 @@ elseif name == "Bmatrix" then
   local cellsgrid, maxheight = grid_of_exps(exp.content.exps)
   local res = combine_matrix_grid(cellsgrid, maxheight)
   res.my = math.floor(res.h/2)
-  g = res:enclose_brackets()
+  g = res:enclose_bracket()
 
 @put_children_join_horiz+=
 table.insert(c.children, { self, 0, s1 })
