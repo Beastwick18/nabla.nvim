@@ -14,7 +14,7 @@ vec_arrow = "→",
 local txt = ""
 local w = belowgrid.w
 for x=1,w-1 do
-	txt = txt .. style.div_middle_bar
+	txt = txt .. "—"
 end
 txt = txt .. style.vec_arrow
 

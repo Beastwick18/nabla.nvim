@@ -82,7 +82,6 @@ local style = {
 	left_single_bra = '{',
 	right_single_bra = '}',
 
-	tilde_symbol = "˷",
 	vec_arrow = "→",
 
 }
@@ -384,7 +383,7 @@ local special_syms = {
 	["hookrightarrow"] = "↪",
 	["hslash"] = "ℏ",
 	["idotsint"] = "∫⋯∫",
-	["iff"] = "⟺",
+	["iff"] = "⇔",
 	["image"] = "⊷",
 	["imath"] = "ı",
 	["Im"] = "ℑ",
@@ -1741,10 +1740,28 @@ function to_ascii(explist, exp_i)
     		g = c2
 
 
+    	elseif name == "breve" then
+    	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
+    	  exp_i = exp_i + 1
+    	  local breve = grid:new(1, 1, { "◡" })
+    	  g = breve:join_vert(belowgrid)
+    	  g.my = belowgrid.my + 1
+    	elseif name == "check" then
+    	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
+    	  exp_i = exp_i + 1
+    	  local check = grid:new(1, 1, { "⌄" })
+    	  g = check:join_vert(belowgrid)
+    	  g.my = belowgrid.my + 1
+    	elseif name == "grave" then
+    	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
+    	  exp_i = exp_i + 1
+    	  local grave = grid:new(1, 1, { "ˎ" })
+    	  g = grave:join_vert(belowgrid)
+    	  g.my = belowgrid.my + 1
     	elseif name == "hat" then
     	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
     	  exp_i = exp_i + 1
-    	  local hat = grid:new(1, 1, { "^" })
+    	  local hat = grid:new(1, 1, { "∧" })
     	  g = hat:join_vert(belowgrid)
     	  g.my = belowgrid.my + 1
     	elseif name == "mathbb" then
@@ -1789,6 +1806,26 @@ function to_ascii(explist, exp_i)
 
     	elseif plain_functions[name] then
     		g = grid:new(#name, 1, {name})
+    	elseif name == "overleftrightarrow" then
+    	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
+    	  exp_i = exp_i + 1
+    	  local txt = "←"
+    	  local w = math.max(belowgrid.w-2, 0)
+    	  if belowgrid.w <= 1 then
+    	    txt = "⟷"
+    	    w = 1
+    	  else
+    	    for x=1,w do
+    	      txt = txt .. "—"
+    	    end
+    	    txt = txt .. "→"
+    	    w = w + 2
+    	  end
+
+    	  local arrow = grid:new(w, 1, {txt})
+    	  g = arrow:join_vert(belowgrid)
+    	  g.my = belowgrid.my + 1
+
     	elseif name == "overline" then
     	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
     	  exp_i = exp_i + 1
@@ -1805,17 +1842,16 @@ function to_ascii(explist, exp_i)
     	elseif name == "tilde" then
     	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
     	  exp_i = exp_i + 1
-    	  local tilde = grid:new(utf8len(style.tilde_symbol), 1, { style.tilde_symbol })
+    	  local tilde = grid:new(1, 1, { "˷" })
     	  g = tilde:join_vert(belowgrid)
     	  g.my = belowgrid.my + 1
-
     	elseif name == "vec" then
     	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
     	  exp_i = exp_i + 1
     	  local txt = ""
     	  local w = belowgrid.w
     	  for x=1,w-1 do
-    	  	txt = txt .. style.div_middle_bar
+    	  	txt = txt .. "—"
     	  end
     	  txt = txt .. style.vec_arrow
 
@@ -1823,6 +1859,12 @@ function to_ascii(explist, exp_i)
     	  g = arrow:join_vert(belowgrid)
     	  g.my = belowgrid.my + 1
 
+    	elseif name == "acute" then
+    	  local belowgrid = to_ascii({explist[exp_i+1]}, 1)
+    	  exp_i = exp_i + 1
+    	  local acute = grid:new(1, 1, { "ˏ" })
+    	  g = acute:join_vert(belowgrid)
+    	  g.my = belowgrid.my + 1
       elseif name == "{" then
         local inside_bra = {}
         while exp_i+1 <= #explist do
