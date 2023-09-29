@@ -593,7 +593,6 @@ function enable_virt(opts)
 			buffer = buf,
 			desc = "nabla.nvim: Regenerates virt_lines automatically when the user exists insert mode",
 			callback = function()
-				print("Update")
 				autogen_flag = true
 				disable_virt()
 				autogen_flag = false
