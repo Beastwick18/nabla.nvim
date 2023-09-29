@@ -19,7 +19,7 @@ local special_syms = {
 	@special_symbols
 }
 
-local dots_symbols = {
+local dots_syms = {
 	@dots_symbols
 }
 
@@ -506,8 +506,8 @@ else
 end
 
 @transform_function_into_ascii+=
-elseif special_syms[name] or special_nums[name] or greek_etc[name] then
-	local sym = special_syms[name] or special_nums[name] or greek_etc[name]
+elseif special_syms[name] or special_nums[name] or greek_etc[name] or dots_syms[name] then
+	local sym = special_syms[name] or special_nums[name] or greek_etc[name] or dots_syms[name]
   local t
   @determine_type_special
 	g = grid:new(utf8len(sym), 1, { sym }, t)
@@ -962,7 +962,7 @@ elseif special_nums[name] then
   t = "num"
 elseif greek_etc[name] then
   t = "var"
-elseif dots_symbols[name] then
+elseif dots_syms[name] then
 	t = "sym"
 end
 

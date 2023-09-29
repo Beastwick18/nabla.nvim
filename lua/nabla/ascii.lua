@@ -716,7 +716,7 @@ local special_syms = {
 
 }
 
-local dots_symbols = {
+local dots_syms = {
 	["cdots"] = "⋯",
 	["vdots"] = "⋮",
 	["ddots"] = "⋱",
@@ -1586,8 +1586,8 @@ function to_ascii(explist, exp_i)
     		g = c2
 
 
-    	elseif special_syms[name] or special_nums[name] or greek_etc[name] then
-    		local sym = special_syms[name] or special_nums[name] or greek_etc[name]
+    	elseif special_syms[name] or special_nums[name] or greek_etc[name] or dots_syms[name] then
+    		local sym = special_syms[name] or special_nums[name] or greek_etc[name] or dots_syms[name]
     	  local t
     	  if special_syms[name] then
     	    t = "sym"
@@ -1599,7 +1599,7 @@ function to_ascii(explist, exp_i)
     	    t = "num"
     	  elseif greek_etc[name] then
     	    t = "var"
-    	  elseif dots_symbols[name] then
+    	  elseif dots_syms[name] then
     	  	t = "sym"
     	  end
 
